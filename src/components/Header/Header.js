@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import { Container, Content, Input, Profile } from './styles';
-import Img from '../../assets/images/logo.png';
+import Img from '../../assets/images/logo.svg';
 
 export default function Header() {
   const counter = useSelector((state) => state);
@@ -15,10 +15,12 @@ export default function Header() {
           <span className="menu_hamburger">
             <GiHamburgerMenu />
           </span>
-          <img className="logo" src={Img} alt="logo_corebiz" />
+          <div className="logo">
+            <img className="logo" src={Img} alt="my_car" />
+          </div>
         </nav>
         <Input>
-          <input type="text" placeholder="O que você está procurando?" />
+          <input type="text" placeholder="What are you looking for?" />
         </Input>
 
         <Profile>

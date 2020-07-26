@@ -8,12 +8,14 @@ export default createGlobalStyle`
   padding:0;
   outline:0;
   box-sizing:border-box;
+
 }
 *:focus{
   outline:0;
 }
 html,body, #root{
   height:100%;
+  background:#f9f9f9;
 }
 body{
   -webkit-font-smoothing: antialiased;

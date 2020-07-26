@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: #f9f9f9;
+  background: #282a36;
 `;
 export const Content = styled.div`
-  background: #f9f9f9;
+  background: #282a36;
   max-width: 1248px;
   margin: 0 auto;
   height: 80px;
@@ -14,21 +14,22 @@ export const Content = styled.div`
 
   img {
     margin-left: 10px;
-    height: 30px;
+    margin-top: 10px;
+    height: 200px;
 
     @media only screen and (max-width: 323px) {
       margin-left: 10px;
       visibility: visible;
       margin-left: 10px;
-      height: 25px;
+      height: 150px;
     }
   }
 
   .logo {
     @media only screen and (max-width: 323px) {
       position: absolute;
-      left: 85px;
-      top: 10px;
+      left: 45px;
+      top: -27px;
     }
   }
 
@@ -40,6 +41,10 @@ export const Content = styled.div`
       top: 15px;
       left: 20px;
       visibility: visible;
+
+      svg {
+        color: #ffff;
+      }
     }
   }
 `;
@@ -53,6 +58,7 @@ export const Input = styled.div`
   @media only screen and (max-width: 323px) {
     position: absolute;
     top: 15px;
+    left: -10px;
     z-index: 0;
 
     input {
@@ -68,6 +74,7 @@ export const Input = styled.div`
       padding: 3px 0px;
       border-bottom: 1px solid #7a7a7a;
       background: #f9f9f9;
+      border-radius: 10px;
     }
   }
 
@@ -82,9 +89,10 @@ export const Input = styled.div`
     font-size: 13px;
     line-height: 18px;
     margin-left: 20px;
-    padding: 3px 0px;
+    padding: 5px 5px;
     border-bottom: 1px solid #7a7a7a;
     background: #f9f9f9;
+    border-radius: 15px;
   }
   img {
     display: flex;
@@ -149,9 +157,9 @@ export const Profile = styled.div`
       color: #7a7a7a;
     }
     span {
-      width: 14px;
-      height: 14px;
-      padding: 6 6px;
+      width: 16px;
+      height: 16px;
+      padding: 8 8px;
       color: white;
       background: #f8475f;
       text-align: center;
@@ -162,6 +170,11 @@ export const Profile = styled.div`
       line-height: 14px;
       align-items: center;
       border-radius: 10px;
+      border: 1px solid white;
+
+      @media only screen and (max-width: 323px) {
+        display: none;
+      }
     }
   }
 `;

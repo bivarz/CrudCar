@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://corebiz-test.herokuapp.com/api/v1/products',
+  baseURL: 'http://157.230.213.199:3000/api/cars',
 });
 export default api;
