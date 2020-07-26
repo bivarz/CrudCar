@@ -1,10 +1,27 @@
-import React from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useState, useEffect } from 'react';
 import { BsPencilSquare } from 'react-icons/bs';
+import api from '../../services/api';
+import { formatPrice } from '../../utils/format';
 
 import { Container } from './styles';
 import Banner from '../../components/Banner';
 
-export default function index() {
+function Home() {
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await api.get('cars');
+      const data = response.data.map((car) => ({
+        ...car,
+        priceFormatted: formatPrice(car.price),
+      }));
+      setCars(data);
+    }
+    getData();
+  }, []);
+
   return (
     <Container>
       <div className="container_banner">
@@ -33,31 +50,38 @@ export default function index() {
           <span className="header_button" />
         </div>
         <div className="list_total">
-          <div className="list_cars">
-            <div style={{ marginLeft: 10, marginRight: -30 }}>
-              <input type="checkbox" />
-            </div>
-            <span className="id_cars">
-              <p>5da87d97a9497b001d834aa7</p>
-            </span>
-            <div className="title">
-              <p>Gol</p>
-            </div>
-            <div className="brand">
-              <p>Volkswagen</p>
-            </div>
-            <div className="age">
-              <p>2008</p>
-            </div>
-            <div className="price">
-              <p>R$23.000,00</p>
-            </div>
-            <span className="edit">
-              <button type="button">
-                <BsPencilSquare size={15} />
-              </button>
-            </span>
-          </div>
+          <ul>
+            {cars.map((car) => (
+              <li key={car._id}>
+                {' '}
+                <div className="list_cars">
+                  <div style={{ marginLeft: 10, marginRight: -30 }}>
+                    <input type="checkbox" />
+                  </div>
+                  <span className="id_cars">
+                    <p>{car._id}</p>
+                  </span>
+                  <div className="title">
+                    <p>{car.title}</p>
+                  </div>
+                  <div className="brand">
+                    <p>{car.brand}</p>
+                  </div>
+                  <div className="age">
+                    <p>{car.age}</p>
+                  </div>
+                  <div className="price">
+                    <p>{car.priceFormatted}</p>
+                  </div>
+                  <span className="edit">
+                    <button type="button">
+                      <BsPencilSquare size={15} />
+                    </button>
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -65,3 +89,5 @@ export default function index() {
     </Container>
   );
 }
+
+export default Home;
