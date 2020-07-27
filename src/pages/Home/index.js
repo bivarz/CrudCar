@@ -1,14 +1,17 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
+
 import { BsPencilSquare } from 'react-icons/bs';
 import api from '../../services/api';
 import { formatPrice } from '../../utils/format';
+import Modal from '../../components/Modal/Modal';
 
 import { Container } from './styles';
 import Banner from '../../components/Banner';
 
 function Home() {
   const [cars, setCars] = useState([]);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -19,11 +22,23 @@ function Home() {
       }));
       setCars(data);
     }
+
     getData();
   }, []);
+  function handleModal() {
+    setModalVisible(true);
+  }
+  function handleModalClose() {
+    setModalVisible(false);
+  }
 
   return (
     <Container>
+      {isModalVisible ? (
+        <Modal onClose={handleModalClose}>
+          <h2>Modal</h2>
+        </Modal>
+      ) : null}
       <div className="container_banner">
         <Banner />
       </div>
@@ -53,7 +68,6 @@ function Home() {
           <ul>
             {cars.map((car) => (
               <li key={car._id}>
-                {' '}
                 <div className="list_cars">
                   <div style={{ marginLeft: 10, marginRight: -30 }}>
                     <input type="checkbox" />
@@ -74,7 +88,7 @@ function Home() {
                     <p>{car.priceFormatted}</p>
                   </div>
                   <span className="edit">
-                    <button type="button">
+                    <button type="button" onClick={handleModal}>
                       <BsPencilSquare size={15} />
                     </button>
                   </span>

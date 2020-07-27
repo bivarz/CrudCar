@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import { FiCheckCircle } from 'react-icons/fi';
 import { Container, ContentMsg } from './styles';
 
 function MsgDone({ close }) {
@@ -8,15 +9,15 @@ function MsgDone({ close }) {
     <Container>
       <ContentMsg>
         <div className="content_msg">
+          <div>
+            <FiCheckCircle size={100} />
+          </div>
           <div className="content_msg_done">
-            <span>Seu e-mail foi cadastrado com sucesso!</span>
-            <p>
-              A partir de agora você receberá as novidade e ofertas exclusivas.
-            </p>
+            <span>Car successfully registered!</span>
           </div>
           <div className="content_button">
             <button type="button" onClick={close}>
-              Cadastrar novo e-mail!
+              Register New Car!
             </button>
           </div>
         </div>

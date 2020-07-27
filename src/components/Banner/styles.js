@@ -7,6 +7,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   background: #383a59;
   max-width: 1248px;
+  width: 100%;
   margin: 0 auto;
   height: 50px;
   display: flex;
@@ -36,18 +37,17 @@ export const Content = styled.div`
   }
 
   .button_add {
-    span {
+    button {
       display: flex;
       align-items: center;
       justify-content: row;
       width: 100px;
       height: 40px;
       border-radius: 5px;
+      border: none;
       background: #62d06e;
-      cursor: pointer;
-      transition: 0.4s ease-out;
     }
-    span:hover {
+    button:hover {
       transition: 0.5s;
       background: #50bf5b;
     }

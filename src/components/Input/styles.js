@@ -6,23 +6,9 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 146px;
-  background: #f2f2f2;
-
-  @media only screen and (max-width: 323px) {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  @media only screen and (max-width: 750px) {
-    width: 100%;
-    display: flex;
-
-    height: 146px;
-  }
+  position: absolute;
+  width: 320px;
+  height: 400px;
 
   .focused {
     border: 1px solid #d7182a;
@@ -31,12 +17,6 @@ export const Container = styled.div`
   .container_content {
     justify-content: center;
     align-items: center;
-
-    @media only screen and (max-width: 750px) {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-    }
   }
   .container_content_title {
     display: flex;
@@ -49,27 +29,41 @@ export const Container = styled.div`
     font-weight: bold;
     font-size: 22px;
     line-height: 22px;
-    margin-bottom: 16px;
   }
 
   form {
-    display: flex;
-    justify-content: space-between;
+    display: block;
+    justify-content: space-space-around;
     align-items: center;
+    margin-top: 10px;
     width: 100%;
 
-    @media only screen and (max-width: 323px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: left;
+    p {
+      font-size: 12px;
+      margin-top: 5px;
+      margin-bottom: -4px;
+      margin-left: 3px;
     }
   }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  .button_cancel {
+    background: #fff;
+    border: 1px solid red;
+    color: red;
 
+    :hover {
+      background: red;
+      color: #fff;
+    }
+  }
   button {
     display: flex;
-    width: 140px;
+    width: 135px;
     height: 48px;
-    background: #000000;
+    background: #383a59;
     border-radius: 5px;
     font-style: normal;
     font-weight: bold;
@@ -81,97 +75,50 @@ export const Container = styled.div`
     text-align: center;
     color: #ffff;
     border: none;
-    margin-left: 0px;
+    margin-top: 15px;
 
-    @media only screen and (max-width: 323px) {
-      display: flex;
-      width: 288px;
-      height: 48px;
-      background: #000000;
-      border-radius: 5px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #ffff;
-      border: none;
-      margin-left: 0px;
+    :hover {
+      background: #363856;
+      color: #fff;
     }
   }
   Input {
     width: 100%;
     width: 280px;
-    height: 48px;
+    height: 40px;
     background: #ffffff;
-    margin-right: 8px;
+    margin-top: 0px;
     border-radius: 5px;
     padding: 16px;
     border: none;
-
-    @media only screen and (max-width: 323px) {
-      width: 288px;
-      height: 48px;
-      background: #ffffff;
-
-      border-radius: 5px;
-      padding: 16px;
-      border: none;
-      marging-left: 8px;
-      margim-top: 150px;
-      margim-bottom: 15px;
-    }
-
-    @media only screen and (max-width: 800px) {
-      width: 288px;
-      height: 48px;
-      background: #ffffff;
-      border-radius: 5px;
-      padding: 16px;
-      border: none;
-      marging-left: 8px;
-      margim-top: 150px;
-      margim-bottom: 15px;
-    }
 
     ::placeholder {
       font-style: normal;
       font-weight: bold;
       font-size: 12px;
       line-height: 14px;
-
-      color: #585858;
+      color: #c6c6c6;
     }
 
     :focus {
-      border: 1px solid #bdbdbd;
+      border: 1px solid #383a59;
       padding: 16px;
     }
   }
 `;
 export const Content = styled.div`
-  @media only screen and (max-width: 742px) {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
 
   span {
     display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 9px;
+    position: relative;
+    bottom: 0px;
     color: #d7182a;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 9px;
     line-height: 12px;
-
-    @media only screen and (max-width: 323px) {
-      visibility: hidden;
-    }
   }
 `;
 export const ContentMsg = styled.div`
@@ -179,9 +126,13 @@ export const ContentMsg = styled.div`
     width: 100%;
     max-width: 360px;
     display: block;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
+
+    svg {
+      margin-bottom: 10px;
+      margin-left: 110px;
+      color: #50bf5b;
+    }
   }
   .content_msg_done {
     width: 100%;
@@ -189,8 +140,7 @@ export const ContentMsg = styled.div`
     align-items: center;
     text-align: center;
     justify-content: center;
-    height: 26px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 
     span {
       align-items: center;
@@ -200,6 +150,7 @@ export const ContentMsg = styled.div`
       font-weight: bold;
       font-size: 14px;
       line-height: 14px;
+      color: #383a59;
     }
     p {
       position: relative;
@@ -211,9 +162,6 @@ export const ContentMsg = styled.div`
       display: flex;
       align-items: center;
       text-align: center;
-      margin-bottom: 15px;
-
-      color: #333333;
     }
   }
   .content_button {
@@ -226,7 +174,7 @@ export const ContentMsg = styled.div`
       position: relative;
       width: 328px;
       height: 48px;
-      background: #000000;
+      background: #383a59;
       border-radius: 5px;
       font-style: normal;
       font-weight: bold;
@@ -239,10 +187,6 @@ export const ContentMsg = styled.div`
       color: #ffff;
       border: none;
       margin-left: 0px;
-
-      @media only screen and (max-width: 323px) {
-        width: 288px;
-      }
     }
   }
 `;

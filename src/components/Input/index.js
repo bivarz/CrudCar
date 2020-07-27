@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Form } from '@unform/web';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Input from './Input';
@@ -7,7 +8,7 @@ import MsgDone from './MsgDone';
 
 import { Container } from './styles';
 
-function FormIn() {
+function FormIn({ view }) {
   const [submit, setSubmit] = useState(true);
   const formRef = useRef(null);
 
@@ -19,9 +20,11 @@ function FormIn() {
   /* Post dos dados do input */
   const apiPost = (data) => {
     axios
-      .post('https://corebiz-test.herokuapp.com/api/v1/newsletter', {
-        email: data.email,
-        name: data.nome,
+      .post('http://157.230.213.199:3000/api/cars', {
+        title: data.title,
+        brand: data.brand,
+        price: data.price,
+        age: data.age,
       })
       // eslint-disable-next-line no-console
       .then((response) => console.log(response.data))
@@ -34,10 +37,10 @@ function FormIn() {
   async function handleSubmit(data, { reset }) {
     try {
       const schema = Yup.object().shape({
-        nome: Yup.string().required('Preencha com seu nome completo'),
-        email: Yup.string()
-          .email('Preencha com um e-mail válido')
-          .required('Preencha com um e-mail válido'),
+        title: Yup.string().required('Title is Required!'),
+        brand: Yup.string().required('Brand is Required!'),
+        price: Yup.string().required('Price is Required!'),
+        age: Yup.string().required('Age is Required!'),
       });
       await schema.validate(data, { abortEarly: false });
       apiPost(data);
@@ -63,14 +66,27 @@ function FormIn() {
       <Container>
         <div className="container_content">
           <div className="container_content_title">
-            <p>Participe de nossas news com promoções e novidades!</p>
+            <p>Add New Car</p>
           </div>
 
           <div className="form">
             <Form ref={formRef} onSubmit={handleSubmit}>
-              <Input name="nome" placeholder="Digite seu Nome" />
-              <Input name="email" placeholder="Digite seu Email" />
-              <button type="submit">Eu quero!</button>
+              <div>
+                <p>Title</p>
+                <Input name="title" placeholder="Enter Title" />
+              </div>
+              <p>Brand</p>
+              <Input name="brand" placeholder="Enter Brand" />
+              <p>Price</p>
+              <Input name="price" placeholder="Enter Price" />
+              <p>Age</p>
+              <Input name="age" placeholder="Enter Age" />
+              <div className="buttons">
+                <button type="button" className="button_cancel" onClick={view}>
+                  Cancel
+                </button>
+                <button type="submit">Register</button>
+              </div>
             </Form>
           </div>
         </div>
@@ -82,3 +98,7 @@ function FormIn() {
 }
 
 export default FormIn;
+
+FormIn.propTypes = {
+  view: PropTypes.bool.isRequired,
+};
