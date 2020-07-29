@@ -27,7 +27,7 @@ function FormIn({ view }) {
         age: data.age,
       })
       // eslint-disable-next-line no-console
-      .then((response) => console.log(response.data))
+      .then()
       // eslint-disable-next-line no-console
       .catch((response) => console.log(response.status));
   };

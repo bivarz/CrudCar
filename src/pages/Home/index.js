@@ -51,7 +51,7 @@ function Home() {
       ) : null}
       <Container>
         <div className="container_banner">
-          <Banner update={handleModalClose} total={total} />
+          <Banner total={total} onclose={handleModalClose} />
         </div>
 
         <div className="list">
