@@ -12,7 +12,9 @@ import Banner from '../../components/Banner';
 function Home() {
   const [cars, setCars] = useState([]);
   const [isModalVisible, setModalVisible] = useState(false);
-  const [idC, setId] = useState({});
+  const [total, setTotal] = useState(0);
+
+  const [infoCar, setInfoCar] = useState({});
 
   async function getData() {
     const response = await api.get('cars');
@@ -21,6 +23,7 @@ function Home() {
       priceFormatted: formatPrice(car.price),
     }));
     setCars(data);
+    setTotal(data.length);
   }
 
   useEffect(() => {
@@ -36,18 +39,21 @@ function Home() {
     setModalVisible(false);
   });
 
-  function modal(id) {
-    setId(id);
+  function modal(car) {
+    setInfoCar(car);
     setModalVisible(true);
   }
 
   return (
     <>
-      {isModalVisible ? <Modal id={idC} onClose={handleModalClose} /> : null}
+      {isModalVisible ? (
+        <Modal car={infoCar} onClose={handleModalClose} />
+      ) : null}
       <Container>
         <div className="container_banner">
-          <Banner update={handleModalClose} />
+          <Banner update={handleModalClose} total={total} />
         </div>
+
         <div className="list">
           <div className="header_list">
             <div style={{ marginLeft: 10, marginRight: -30 }}>
@@ -115,7 +121,6 @@ function Home() {
             </ul>
           </div>
         </div>
-        <div className="container_form" />
       </Container>
     </>
   );

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Style = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 50;
   display: flex;
@@ -51,7 +51,8 @@ export const Style = styled.div`
   }
 
   .container {
-    position: relative;
+    position: absolute;
+    top: 100px;
     max-width: 380px;
     width: 100%;
     height: 400px;
@@ -69,7 +70,7 @@ export const Style = styled.div`
       background: red;
       border: none;
       color: #fff;
-      border-radius: 5px;
+      border-radius: 50px;
       margin-top: 5px;
       left: 345px;
       font: bolder;

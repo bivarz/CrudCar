@@ -7,8 +7,14 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  left: 30px;
+  top: 10px;
   width: 320px;
   height: 400px;
+
+  @media only screen and (max-width: 385px) {
+    left: -5px;
+  }
 
   .focused {
     border: 1px solid #d7182a;

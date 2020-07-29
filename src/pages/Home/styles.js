@@ -270,3 +270,17 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const Pagination = styled.div`
+  display: flex;
+  min-width: 320px;
+`;
+export const PaginationButton = styled.div`
+  display: flex;
+  background: red;
+`;
+export const PaginationItem = styled.div`
+  display: flex;
+  background: black;
+  color: #fff;
+`;

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { FaPlusCircle } from 'react-icons/fa';
 import { Container, Content } from './styles';
 import New from '../NewCar/New';
 
-export default function Banner() {
+export default function Banner({ total }) {
   const [isModalVisible, setModalVisible] = useState(false);
-  // const counter = useSelector((state) => state);
 
   function handleModal() {
     setModalVisible(true);
@@ -25,7 +24,7 @@ export default function Banner() {
       <Container>
         <Content>
           <div className="qty">
-            <p>In Total: 23</p>
+            <p>In Total: {total}</p>
           </div>
           <div className="button_add">
             <button type="button" onClick={handleModal}>
@@ -38,3 +37,6 @@ export default function Banner() {
     </>
   );
 }
+Banner.propTypes = {
+  total: PropTypes.number.isRequired,
+};

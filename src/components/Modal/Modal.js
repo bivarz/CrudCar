@@ -6,10 +6,10 @@ import api from '../../services/api';
 import Input from '../ChangeCar';
 import { Style } from './styles';
 
-const Modal = ({ onClose, id }) => {
+const Modal = ({ onClose, car }) => {
   const apiDelete = () => {
     api
-      .delete(`cars/${id.id}`)
+      .delete(`cars/${car.id}`)
       .then(onClose)
       .catch((response) => console.log(response.status));
   };
@@ -24,7 +24,7 @@ const Modal = ({ onClose, id }) => {
         </div>
         <div className="title">
           <p>
-            Edit the Car:{id.title}/{id.age}
+            Edit the Car:{car.title}/{car.age}
           </p>
           <button type="button" onClick={apiDelete}>
             <p>Delete this Car</p>
@@ -32,7 +32,7 @@ const Modal = ({ onClose, id }) => {
           </button>
         </div>
 
-        <Input id={id.id} view={onClose} carValue={id} />
+        <Input id={car.id} view={onClose} carValue={car} />
       </div>
     </Style>
   );

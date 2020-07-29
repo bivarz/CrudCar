@@ -22,7 +22,7 @@ function FormIn({ view, id, carValue }) {
 
   /* Função para modificar o state e retornar a msg de conclusão */
   const handleClose = () => {
-    setSubmit(false);
+    setSubmit(true);
   };
 
   /* Put dos dados do input */

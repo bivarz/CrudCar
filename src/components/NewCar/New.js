@@ -13,9 +13,10 @@ const Modal = ({ onClose }) => {
           </button>
         </div>
 
-        <div className="content" />
+        <div className="content">
+          <Input view={onClose} />
+        </div>
       </div>
-      <Input view={onClose} />
     </Style>
   );
 };
