@@ -5,6 +5,7 @@ import { FiCheckCircle } from 'react-icons/fi';
 import { Container, ContentMsg } from './styles';
 
 function MsgDone({ close }) {
+  setTimeout(close, 5000);
   return (
     <Container>
       <ContentMsg>
