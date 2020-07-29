@@ -46,9 +46,8 @@ function FormIn({ view }) {
       apiPost(data);
       formRef.current.setErrors({});
 
-      setTimeout(() => {
-        setSubmit(!submit);
-      }, 0);
+      setSubmit(!submit);
+
       reset();
     } catch (err) {
       if (err instanceof Yup.ValidationError) {

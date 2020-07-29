@@ -22,7 +22,7 @@ function FormIn({ view, id, carValue }) {
 
   /* Função para modificar o state e retornar a msg de conclusão */
   const handleClose = () => {
-    setSubmit(true);
+    setSubmit(false);
   };
 
   /* Put dos dados do input */
@@ -40,7 +40,7 @@ function FormIn({ view, id, carValue }) {
 
   /* Função para pegar os dados do input , o yup faz a validação dos campos
 e se a tentativa der erro ela retorna as menssagens */
-  async function handleSubmit(data, { reset }) {
+  async function handleSubmit(data) {
     try {
       const schema = Yup.object().shape({
         title: Yup.string().required(),
@@ -52,10 +52,7 @@ e se a tentativa der erro ela retorna as menssagens */
       apiPut(data);
       formRef.current.setErrors({});
 
-      setTimeout(() => {
-        setSubmit(!submit);
-      }, 0);
-      reset();
+      setSubmit(false);
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages = {};

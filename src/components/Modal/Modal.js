@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { MdDeleteForever } from 'react-icons/md';
 import api from '../../services/api';
@@ -7,15 +7,9 @@ import Input from '../ChangeCar';
 import { Style } from './styles';
 
 const Modal = ({ onClose, id }) => {
-  const [cars, setCars] = useState({});
-
-  useEffect(() => {
-    setCars(id);
-  }, [id]);
-
   const apiDelete = () => {
     api
-      .delete(`cars/${cars.id}`)
+      .delete(`cars/${id.id}`)
       .then(onClose)
       .catch((response) => console.log(response.status));
   };
@@ -30,7 +24,7 @@ const Modal = ({ onClose, id }) => {
         </div>
         <div className="title">
           <p>
-            Edit the Car:{cars.title}/{cars.age}
+            Edit the Car:{id.title}/{id.age}
           </p>
           <button type="button" onClick={apiDelete}>
             <p>Delete this Car</p>
@@ -38,7 +32,7 @@ const Modal = ({ onClose, id }) => {
           </button>
         </div>
 
-        <Input id={id.id} view={onClose} carValue={cars} />
+        <Input id={id.id} view={onClose} carValue={id} />
       </div>
     </Style>
   );
