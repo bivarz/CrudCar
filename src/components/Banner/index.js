@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-
+// import { useSelector } from 'react-redux';
 import { FaPlusCircle } from 'react-icons/fa';
 import { Container, Content } from './styles';
 import New from '../NewCar/New';
 
 export default function Banner() {
-  const [isModalVisible, setModalVisible] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
+  // const counter = useSelector((state) => state);
 
   function handleModal() {
     setModalVisible(true);
@@ -13,6 +14,9 @@ export default function Banner() {
   function handleModalClose() {
     setModalVisible(false);
   }
+  window.addEventListener('scroll', () => {
+    setModalVisible(false);
+  });
 
   return (
     <>

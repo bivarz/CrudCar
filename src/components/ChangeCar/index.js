@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useRef } from 'react';
 import { Form } from '@unform/web';
 import PropTypes from 'prop-types';
@@ -8,48 +9,53 @@ import MsgDone from './MsgDone';
 
 import { Container } from './styles';
 
-function FormIn({ view }) {
+function FormIn({ view, id, carValue }) {
   const [submit, setSubmit] = useState(true);
   const formRef = useRef(null);
+
+  const initialState = {
+    title: carValue.title,
+    brand: carValue.brand,
+    price: carValue.price,
+    age: carValue.age,
+  };
 
   /* Função para modificar o state e retornar a msg de conclusão */
   const handleClose = () => {
     setSubmit(true);
   };
 
-  /* Post dos dados do input */
-  const apiPost = (data) => {
+  /* Put dos dados do input */
+  const apiPut = (data) => {
     axios
-      .post('http://157.230.213.199:3000/api/cars', {
+      .put(`http://157.230.213.199:3000/api/cars/${id}`, {
         title: data.title,
         brand: data.brand,
         price: data.price,
         age: data.age,
       })
-      // eslint-disable-next-line no-console
-      .then((response) => console.log(response.data))
-      // eslint-disable-next-line no-console
+      .then()
       .catch((response) => console.log(response.status));
   };
 
   /* Função para pegar os dados do input , o yup faz a validação dos campos
-   e se a tentativa der erro ela retorna as menssagens */
+e se a tentativa der erro ela retorna as menssagens */
   async function handleSubmit(data, { reset }) {
     try {
       const schema = Yup.object().shape({
-        title: Yup.string().required('Title is Required!'),
-        brand: Yup.string().required('Brand is Required!'),
-        price: Yup.number().required('Price is Required!'),
-        age: Yup.number().required('Age is Required!'),
+        title: Yup.string().required(),
+        brand: Yup.string().required(),
+        price: Yup.number().required(),
+        age: Yup.number().min(4).required(),
       });
       await schema.validate(data, { abortEarly: false });
-      apiPost(data);
+      apiPut(data);
       formRef.current.setErrors({});
 
       setTimeout(() => {
         setSubmit(!submit);
       }, 0);
-      reset();
+      reset(AbortSignal());
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages = {};
@@ -65,27 +71,28 @@ function FormIn({ view }) {
     return (
       <Container>
         <div className="container_content">
-          <div className="container_content_title">
-            <p>Add New Car</p>
-          </div>
-
+          <div className="container_content_title" />
           <div className="form">
-            <Form ref={formRef} onSubmit={handleSubmit}>
+            <Form
+              initialData={initialState}
+              ref={formRef}
+              onSubmit={handleSubmit}
+            >
               <div>
-                <p>Title</p>
+                <p>New Title</p>
                 <Input name="title" placeholder="Enter Title - Ex. Amarok" />
               </div>
-              <p>Brand</p>
+              <p>New Brand</p>
               <Input name="brand" placeholder="Enter Brand - Ex. Ford" />
-              <p>Price</p>
+              <p>New Price</p>
               <Input name="price" placeholder="Enter Price - Ex. 15000" />
-              <p>Age</p>
-              <Input name="age" placeholder="Enter Age - Ex:.2000" />
+              <p>New Age</p>
+              <Input name="age" placeholder="Enter Age - Ex.2000" />
               <div className="buttons">
                 <button type="button" className="button_cancel" onClick={view}>
                   Cancel
                 </button>
-                <button type="submit">Register</button>
+                <button type="submit">Save Changes</button>
               </div>
             </Form>
           </div>
@@ -101,4 +108,5 @@ export default FormIn;
 
 FormIn.propTypes = {
   view: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };

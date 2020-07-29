@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { MdDeleteForever } from 'react-icons/md';
+import api from '../../services/api';
+import Input from '../ChangeCar';
 import { Style } from './styles';
 
-const Modal = ({ children, onClose }) => {
+const Modal = ({ onClose, id }) => {
+  const [cars, setCars] = useState({});
+
+  useEffect(() => {
+    async function getData() {
+      const response = await api.get(`cars/${id}`);
+      const { data } = response;
+      setCars(data);
+    }
+    getData();
+  }, [id]);
+
+  const apiDelete = () => {
+    api
+      .delete(`cars/${id}`)
+      .then(onClose)
+      .catch((response) => console.log(response.status));
+  };
+
   return (
     <Style>
       <div className="container">
@@ -11,8 +32,17 @@ const Modal = ({ children, onClose }) => {
             x
           </button>
         </div>
+        <div className="title">
+          <p>
+            Edit the Car: {cars.title}/{cars.age}
+          </p>
+          <button type="button" onClick={apiDelete}>
+            <p>Delete this Car</p>
+            <MdDeleteForever size={15} />
+          </button>
+        </div>
 
-        <div className="content">{children}</div>
+        <Input id={id} view={onClose} carValue={cars} />
       </div>
     </Style>
   );
@@ -20,6 +50,6 @@ const Modal = ({ children, onClose }) => {
 export default Modal;
 
 Modal.propTypes = {
-  children: PropTypes.element.isRequired,
-  onClose: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };

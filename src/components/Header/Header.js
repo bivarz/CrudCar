@@ -1,13 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { AiFillMail, AiFillCamera } from 'react-icons/ai';
 
 import { Container, Content, Input, Profile } from './styles';
 import Img from '../../assets/images/logo.svg';
 
 export default function Header() {
-  const counter = useSelector((state) => state);
-
   return (
     <Container>
       <Content>
@@ -25,8 +24,17 @@ export default function Header() {
 
         <Profile>
           <div className="profile_items">
+            <AiFillMail size={18} />
+            <div className="image">
+              <img
+                src="https://avatars1.githubusercontent.com/u/53359269?s=460&u=55ca830ff0de06136784f41d315a034a21074070&v=4"
+                alt="profile_image"
+              />
+            </div>
             <div className="cart">
-              <span>{counter}</span>
+              <span>
+                <AiFillCamera size={11} />
+              </span>
             </div>
           </div>
         </Profile>

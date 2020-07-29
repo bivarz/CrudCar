@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Style } from './styles';
 import Input from '../Input';
 
-const Modal = ({ children, onClose }) => {
+const Modal = ({ onClose }) => {
   return (
     <Style>
       <div className="container">
@@ -13,7 +13,7 @@ const Modal = ({ children, onClose }) => {
           </button>
         </div>
 
-        <div className="content">{children}</div>
+        <div className="content" />
       </div>
       <Input view={onClose} />
     </Style>
@@ -22,6 +22,5 @@ const Modal = ({ children, onClose }) => {
 export default Modal;
 
 Modal.propTypes = {
-  children: PropTypes.element.isRequired,
-  onClose: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };

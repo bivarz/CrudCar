@@ -61,7 +61,6 @@ export const Container = styled.div`
   .list_total {
     position: relative;
     width: 100%;
-    max-width: 1250px;
   }
   .list_cars {
     display: flex;

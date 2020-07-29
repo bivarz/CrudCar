@@ -36,6 +36,7 @@ export const Style = styled.div`
       left: 350px;
       font: bolder;
       border: 1px #fcfcfc gray;
+      z-index: 50;
 
       @media only screen and (max-width: 381px) {
         left: 275px;

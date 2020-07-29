@@ -24,6 +24,15 @@ export const Content = styled.div`
       height: 150px;
     }
   }
+  .image {
+    position: relative;
+
+    img {
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #62d06e;
+    }
+  }
 
   .logo {
     @media only screen and (max-width: 323px) {
@@ -117,6 +126,7 @@ export const Profile = styled.div`
   }
 
   .cart {
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -143,6 +153,12 @@ export const Profile = styled.div`
     justify-content: left;
     align-items: center;
 
+    svg {
+      color: #fff;
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+
     button {
       background: none;
       border: none;
@@ -156,12 +172,16 @@ export const Profile = styled.div`
       margin-right: 20px;
       color: #7a7a7a;
     }
+
     span {
+      position: absolute;
+      left: -17px;
+      top: 10px;
       width: 16px;
       height: 16px;
       padding: 8 8px;
       color: white;
-      background: #f8475f;
+      background: #282a36;
       text-align: center;
       font-family: Nunito;
       font-style: normal;
@@ -170,7 +190,12 @@ export const Profile = styled.div`
       line-height: 14px;
       align-items: center;
       border-radius: 10px;
-      border: 1px solid white;
+      border: 0.8px solid #62d06e;
+
+      svg {
+        margin-top: 1.3px;
+        margin-left: 0px;
+      }
 
       @media only screen and (max-width: 323px) {
         display: none;

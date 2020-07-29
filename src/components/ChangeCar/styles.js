@@ -7,6 +7,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  left: 30px;
+  top: 10px;
   width: 320px;
   height: 400px;
 
@@ -128,10 +130,11 @@ export const ContentMsg = styled.div`
     max-width: 360px;
     display: block;
     justify-content: center;
+    margin-left: 15px;
 
     svg {
       margin-bottom: 10px;
-      margin-left: 110px;
+      margin-left: 60px;
       color: #50bf5b;
     }
   }
