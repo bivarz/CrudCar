@@ -33,10 +33,19 @@ export const Style = styled.div`
       align-items: center;
       p {
         font-size: 10px;
+        color: #383a59;
       }
 
       svg {
         margin-top: 0px;
+        color: #383a59;
+      }
+
+      :hover {
+        p,
+        svg {
+          color: red;
+        }
       }
     }
   }
@@ -50,7 +59,7 @@ export const Style = styled.div`
     border-radius: 5px;
 
     @media only screen and (max-width: 381px) {
-      width: 310px;
+      max-width: 310px;
     }
 
     .close {

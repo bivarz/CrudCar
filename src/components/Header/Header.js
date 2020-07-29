@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { AiFillMail, AiFillCamera } from 'react-icons/ai';
+import { AiFillMail, AiFillCamera, AiOutlineSearch } from 'react-icons/ai';
 
 import { Container, Content, Input, Profile } from './styles';
 import Img from '../../assets/images/logo.svg';
@@ -20,6 +20,7 @@ export default function Header() {
         </nav>
         <Input>
           <input type="text" placeholder="What are you looking for?" />
+          <AiOutlineSearch size={18} />
         </Input>
 
         <Profile>

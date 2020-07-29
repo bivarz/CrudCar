@@ -12,6 +12,10 @@ export const Container = styled.div`
   width: 320px;
   height: 400px;
 
+  @media only screen and (max-width: 381px) {
+    left: -5px;
+  }
+
   .focused {
     border: 1px solid #d7182a;
   }

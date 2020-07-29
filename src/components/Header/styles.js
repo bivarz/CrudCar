@@ -103,10 +103,10 @@ export const Input = styled.div`
     background: #f9f9f9;
     border-radius: 15px;
   }
-  img {
+  svg {
     display: flex;
     position: relative;
-    left: -21px;
+    left: -25px;
     bottom: 1px;
     z-index: 1;
   }
@@ -152,6 +152,11 @@ export const Profile = styled.div`
     display: flex;
     justify-content: left;
     align-items: center;
+
+    @media only screen and (max-width: 450px) {
+      position: absolute;
+      display: none;
+    }
 
     svg {
       color: #fff;

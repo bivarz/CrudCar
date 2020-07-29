@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { MdDeleteForever } from 'react-icons/md';
@@ -9,17 +10,12 @@ const Modal = ({ onClose, id }) => {
   const [cars, setCars] = useState({});
 
   useEffect(() => {
-    async function getData() {
-      const response = await api.get(`cars/${id}`);
-      const { data } = response;
-      setCars(data);
-    }
-    getData();
+    setCars(id);
   }, [id]);
 
   const apiDelete = () => {
     api
-      .delete(`cars/${id}`)
+      .delete(`cars/${cars.id}`)
       .then(onClose)
       .catch((response) => console.log(response.status));
   };
@@ -34,7 +30,7 @@ const Modal = ({ onClose, id }) => {
         </div>
         <div className="title">
           <p>
-            Edit the Car: {cars.title}/{cars.age}
+            Edit the Car:{cars.title}/{cars.age}
           </p>
           <button type="button" onClick={apiDelete}>
             <p>Delete this Car</p>
@@ -42,7 +38,7 @@ const Modal = ({ onClose, id }) => {
           </button>
         </div>
 
-        <Input id={id} view={onClose} carValue={cars} />
+        <Input id={id.id} view={onClose} carValue={cars} />
       </div>
     </Style>
   );
@@ -51,5 +47,4 @@ export default Modal;
 
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
 };

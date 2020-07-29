@@ -55,7 +55,7 @@ e se a tentativa der erro ela retorna as menssagens */
       setTimeout(() => {
         setSubmit(!submit);
       }, 0);
-      reset(AbortSignal());
+      reset();
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages = {};

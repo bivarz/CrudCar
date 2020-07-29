@@ -46,7 +46,7 @@ function Home() {
       {isModalVisible ? <Modal id={idC} onClose={handleModalClose} /> : null}
       <Container>
         <div className="container_banner">
-          <Banner />
+          <Banner update={handleModalClose} />
         </div>
         <div className="list">
           <div className="header_list">
@@ -94,7 +94,18 @@ function Home() {
                       <p>{car.priceFormatted}</p>
                     </div>
                     <span className="edit">
-                      <button type="button" onClick={() => modal(car._id)}>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          modal({
+                            id: car._id,
+                            title: car.title,
+                            brand: car.brand,
+                            price: car.price,
+                            age: car.age,
+                          })
+                        }
+                      >
                         <BsPencilSquare size={15} />
                       </button>
                     </span>
