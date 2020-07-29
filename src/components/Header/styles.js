@@ -161,6 +161,7 @@ export const Profile = styled.div`
     svg {
       color: #fff;
       margin-left: 5px;
+      margin-right: 10px;
       margin-top: 5px;
     }
 
@@ -198,8 +199,8 @@ export const Profile = styled.div`
       border: 0.8px solid #62d06e;
 
       svg {
-        margin-top: 1.3px;
-        margin-left: 0px;
+        margin-top: 1.5px;
+        margin-left: 1.8px;
       }
 
       @media only screen and (max-width: 323px) {

@@ -12,7 +12,7 @@ export const Container = styled.div`
   width: 320px;
   height: 400px;
 
-  @media only screen and (max-width: 381px) {
+  @media only screen and (max-width: 385px) {
     left: -5px;
   }
 
@@ -134,11 +134,10 @@ export const ContentMsg = styled.div`
     max-width: 360px;
     display: block;
     justify-content: center;
-    margin-left: 15px;
 
     svg {
       margin-bottom: 10px;
-      margin-left: 60px;
+      margin-left: 110px;
       color: #50bf5b;
     }
   }
