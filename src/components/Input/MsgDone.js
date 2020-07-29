@@ -6,11 +6,10 @@ import { Container, ContentMsg } from './styles';
 
 function MsgDone({ close }) {
   useEffect(() => {
-    setTimeout(close, 3000);
+    setTimeout(close, 7000);
 
     return () => clearTimeout();
   }, [close]);
-
   return (
     <Container>
       <ContentMsg>
@@ -19,7 +18,12 @@ function MsgDone({ close }) {
             <FiCheckCircle size={100} />
           </div>
           <div className="content_msg_done">
-            <span>The Car was successfully edited!</span>
+            <span>Car successfully registered!</span>
+          </div>
+          <div className="content_button">
+            <button type="button" onClick={close}>
+              Register New Car!
+            </button>
           </div>
         </div>
       </ContentMsg>
