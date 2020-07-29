@@ -9,7 +9,7 @@ After that, in the paste of clone, Run YARN or NPM INSTALL.
 
 then:
 
-yarn start
+YARN START ,
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 
