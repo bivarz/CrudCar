@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { BsPencilSquare } from 'react-icons/bs';
+
 import api from '../../services/api';
 import { formatPrice } from '../../utils/format';
 import Modal from '../../components/Modal/Modal';
@@ -13,7 +14,6 @@ function Home() {
   const [cars, setCars] = useState([]);
   const [isModalVisible, setModalVisible] = useState(false);
   const [total, setTotal] = useState(0);
-
   const [infoCar, setInfoCar] = useState({});
 
   async function getData() {
@@ -51,12 +51,12 @@ function Home() {
       ) : null}
       <Container>
         <div className="container_banner">
-          <Banner total={total} onclose={handleModalClose} />
+          <Banner total={total} />
         </div>
 
         <div className="list">
           <div className="header_list">
-            <div style={{ marginLeft: 10, marginRight: -30 }}>
+            <div>
               <input type="checkbox" />
             </div>
             <div>
@@ -81,9 +81,7 @@ function Home() {
               {cars.map((car) => (
                 <li key={car._id}>
                   <div className="list_cars">
-                    <div style={{ marginLeft: 10, marginRight: -30 }}>
-                      <input type="checkbox" />
-                    </div>
+                    <div style={{ marginLeft: 10, marginRight: -30 }} />
                     <span className="id_cars">
                       <p>{car._id}</p>
                     </span>

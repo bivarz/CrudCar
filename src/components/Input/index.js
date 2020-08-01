@@ -40,7 +40,7 @@ function FormIn({ view }) {
         title: Yup.string().required('Title is Required!'),
         brand: Yup.string().required('Brand is Required!'),
         price: Yup.number().required('Price is Required!'),
-        age: Yup.number().required('Age is Required!'),
+        age: Yup.number().min(4).required('Age is Required!'),
       });
       await schema.validate(data, { abortEarly: false });
       apiPost(data);
